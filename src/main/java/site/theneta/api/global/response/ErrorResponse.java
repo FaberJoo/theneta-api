@@ -1,4 +1,4 @@
-package site.theneta.api.global.common;
+package site.theneta.api.global.response;
 
 import lombok.AccessLevel;
 import lombok.Getter;

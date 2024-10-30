@@ -25,8 +25,8 @@ import org.springframework.web.servlet.resource.NoResourceFoundException;
 import com.fasterxml.jackson.core.JsonParseException;
 
 import lombok.extern.slf4j.Slf4j;
-import site.theneta.api.global.common.ErrorResponse;
 import site.theneta.api.global.error.exception.BusinessBaseException;
+import site.theneta.api.global.response.ErrorResponse;
 
 @Slf4j
 @ControllerAdvice // 모든 컨트롤러에서 발생하는 예외를 잡아서 처리
