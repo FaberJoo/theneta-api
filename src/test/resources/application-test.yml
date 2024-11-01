@@ -1,0 +1,38 @@
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    datasource:
+      driver-class-name: org.h2.Driver
+      url: jdbc:h2:mem:test
+      username: sa
+    sql:
+      init:
+        encoding: utf-8
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        ddl-auto: validate
+        format_sql: true
+        show_sql: true
+  flyway:
+    enabled: false
+
+logging:
+  level:
+    org.springframework:
+      web: debug
+    site.theneta.api: debug
+
+jwt:
+  secret: test1234567890test1234567890
+  access-token-expiry: 1000000
+  access-token-key: at
+
+theneta:
+  base-url: http://localhost:9999
