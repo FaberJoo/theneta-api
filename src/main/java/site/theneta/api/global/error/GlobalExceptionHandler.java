@@ -25,8 +25,8 @@ import org.springframework.web.servlet.resource.NoResourceFoundException;
 import com.fasterxml.jackson.core.JsonParseException;
 
 import lombok.extern.slf4j.Slf4j;
-import site.theneta.api.global.error.exception.BusinessBaseException;
 import site.theneta.api.global.response.ErrorResponse;
+import site.theneta.api.global.error.exception.BusinessBaseException;
 
 @Slf4j
 @ControllerAdvice // 모든 컨트롤러에서 발생하는 예외를 잡아서 처리
@@ -47,8 +47,23 @@ public class GlobalExceptionHandler {
   protected ResponseEntity<ErrorResponse> handle(MethodArgumentNotValidException e) {
     log.error("Method Argument Not Valid Exception: {}", e.getMessage());
     return new ResponseEntity<>(
-        ErrorResponse.of(ErrorCode.INVALID_INPUT_VALUE, e.getBindingResult()),
+        ErrorResponse.of(ErrorCode.INVALID_REQUEST_PARAMETER, e.getBindingResult()),
         HttpStatus.BAD_REQUEST);
+  }
+
+  /**
+   * Bean Validation 제약조건 위반 예외 처리
+   * 예시:
+   * - @PathVariable, @RequestParam 등의 검증 실패
+   * - Custom validation 실패
+   * 응답: 400 Bad Request
+   */
+  @ExceptionHandler(ConstraintViolationException.class)
+  protected ResponseEntity<ErrorResponse> handle(ConstraintViolationException e) {
+    log.error("Constraint Violation Exception: {}", e.getMessage());
+    return new ResponseEntity<>(
+            ErrorResponse.of(ErrorCode.INVALID_REQUEST_PARAMETER, e.getConstraintViolations()),
+            HttpStatus.BAD_REQUEST);
   }
 
   /**
@@ -119,21 +134,6 @@ public class GlobalExceptionHandler {
   protected ResponseEntity<ErrorResponse> handle(MissingServletRequestParameterException e) {
     log.error("Missing Request Parameter Exception: {}", e.getMessage(), e);
     return createErrorResponseEntity(ErrorCode.MISSING_REQUEST_PARAMETER);
-  }
-
-  /**
-   * Bean Validation 제약조건 위반 예외 처리
-   * 예시:
-   * - @PathVariable, @RequestParam 등의 검증 실패
-   * - Custom validation 실패
-   * 응답: 400 Bad Request
-   */
-  @ExceptionHandler(ConstraintViolationException.class)
-  protected ResponseEntity<ErrorResponse> handle(ConstraintViolationException e) {
-    log.error("Constraint Violation Exception: {}", e.getMessage());
-    return new ResponseEntity<>(
-        ErrorResponse.of(ErrorCode.INVALID_INPUT_VALUE, e.getConstraintViolations()),
-        HttpStatus.BAD_REQUEST);
   }
 
   /**

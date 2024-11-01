@@ -13,14 +13,14 @@ public class BusinessBaseException extends RuntimeException {
     this.target = null;
   }
 
-  public BusinessBaseException(String message, ErrorCode errorCode) {
+  public BusinessBaseException(ErrorCode errorCode, String message) {
     super(message);
     this.errorCode = errorCode;
     this.target = null;
   }
 
-  public BusinessBaseException(String message, ErrorCode errorCode, String target) {
-    super(message);
+  public BusinessBaseException(ErrorCode errorCode, String message, String target) {
+    super(message != null ? message : errorCode.getMessage());
     this.errorCode = errorCode;
     this.target = target;
   }

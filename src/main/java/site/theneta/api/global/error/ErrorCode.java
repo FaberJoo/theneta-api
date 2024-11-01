@@ -31,11 +31,13 @@ public enum ErrorCode {
   TOO_MANY_REQUESTS(HttpStatus.TOO_MANY_REQUESTS, "E429", "요청이 너무 많습니다."),
   INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "E500", "서버 에러가 발생했습니다."),
 
+  INVALID_REQUEST_PARAMETER(HttpStatus.BAD_REQUEST, "A000", "유효하지 않는 요청 값입니다."),
   FILE_SIZE_EXCEEDED(HttpStatus.BAD_REQUEST, "A001", "파일 크기가 최대 제한을 초과했습니다"),
   MISSING_REQUEST_HEADER(HttpStatus.BAD_REQUEST, "A002", "필수 요청 헤더가 누락되었습니다"),
   MISSING_REQUEST_PARAMETER(HttpStatus.BAD_REQUEST, "A003", "필수 요청 매개변수가 누락되었습니다"),
   INVALID_TYPE_VALUE(HttpStatus.BAD_REQUEST, "A004", "유효하지 않은 타입 값입니다"),
-  INVALID_JSON_FORMAT(HttpStatus.BAD_REQUEST, "A005", "유효하지 않은 JSON 형식입니다");
+  INVALID_JSON_FORMAT(HttpStatus.BAD_REQUEST, "A005", "유효하지 않은 JSON 형식입니다"),
+  ;
 
   private final String message;
 
