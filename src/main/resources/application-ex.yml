@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    dbcp2:
+      driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:port/database
+    username: postgres-username
+    password: postgres-password
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        ddl-auto: validate
+        format_sql: true
+        show_sql: true
+
+  flyway:
+    enabled: true
+
+jwt:
+  secret: secretkey
+  access-token-expiry: 9999
+  access-token-key: access-token
+
+logging:
+  level:
+    org.springframework:
+      web: debug
+    site.theneta.api: debug
+
+theneta:
+  base-url: http://localhost:port
