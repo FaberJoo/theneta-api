@@ -20,7 +20,7 @@ import site.theneta.api.apiMvc.v1.auth.controller.request.SignupRequest;
 @Slf4j
 @Tag(name = "Auth API", description = "인증 API")
 @RestController
-@RequestMapping("v1/members")
+@RequestMapping("v1/auth")
 @Validated
 @RequiredArgsConstructor
 public class AuthController {
