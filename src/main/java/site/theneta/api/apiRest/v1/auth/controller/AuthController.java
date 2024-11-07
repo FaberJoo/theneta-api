@@ -26,7 +26,7 @@ import site.theneta.api.apiRest.v1.auth.controller.request.SignupRequest;
 public class AuthController {
   private final AuthService authService;
 
-  @PostMapping("/signUp")
+  @PostMapping("/signup")
   @Operation(summary = "회원 가입", description = "회원 가입을 합니다.")
   public ResponseEntity<?> signUp(
       @RequestBody @Valid SignupRequest req) {
