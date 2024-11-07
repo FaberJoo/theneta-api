@@ -6,20 +6,31 @@ server:
 spring:
   application:
     name: theneta # 애플리케이션 이름
+  config:
+    activate:
+      on-profile: local # 기본 프로파일 활성화
+    import: 'aws-parameterstore:/config/theneta'
+    cloud:
+      aws:
+        parameterstore:
+          region: ${aws_region}
+        credentials:
+          access-key: ${aws_access_key}
+          secret-key: ${aws_secret_key}
 
   # 데이터베이스 설정
   datasource:
     dbcp2:
       driver-class-name: org.postgresql.Driver # PostgreSQL 드라이버
-    url: jdbc:postgresql://localhost:5432/theneta-dev # 개발 DB 접속 정보
-    username: faberjoo # DB 사용자
-    password: Aptx$869 # DB 비밀번호
+    url: jdbc:postgresql://${.db.local.host}:${.db.port}/${.db.local.db} # 개발 DB 접속 정보
+    username: ${.db.local.username} # DB 사용자
+    password: ${.db.local.password} # DB 비밀번호
 
   # Redis 설정
   data:
     redis:
-      host: localhost # Redis 호스트
-      port: 6379 # Redis 포트
+      host: ${.redis.local.host} # Redis 호스트
+      port: ${.redis.port} # Redis 포트
       timeout: 3000 # 연결 타임아웃 (ms)
       lettuce:
         pool: # Redis 커넥션 풀 설정
@@ -44,11 +55,11 @@ spring:
 
 # JWT 설정
 jwt:
-  secret: theneta1234567890theneta1234567890theneta1234567890theneta1234567890theneta1234567890 # JWT 서명 키
+  secret: ${.jwt.secret} # JWT 서명 키
   at-expiry: 1800 # 액세스 토큰 만료 시간 (30분)
-  at-key: at-key # 액세스 토큰 키 이름
+  at-key: access-token # 액세스 토큰 키 이름
   rt-expiry: 1209600 # 리프레시 토큰 만료 시간 (14일)
-  rt-key: rt-key # 리프레시 토큰 키 이름
+  rt-key: refresh-token # 리프레시 토큰 키 이름
 
 # 로깅 설정
 logging:
@@ -59,4 +70,4 @@ logging:
 
 # 애플리케이션 설정
 theneta:
-  base-url: http://localhost:1111 # 프론트엔드 서버 URL
+  base-url: http://localhost:3000 # 프론트엔드 서버 URL

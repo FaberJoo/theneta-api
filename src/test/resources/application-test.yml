@@ -1,0 +1,47 @@
+spring:
+  config:
+    activate:
+      on-profile: test
+
+  h2:
+    console:
+      enabled: true
+      path: /h2
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    datasource:
+      driver-class-name: org.h2.Driver
+      url: jdbc:h2:mem:test
+      username: sa
+    sql:
+      init:
+        encoding: utf-8
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        ddl-auto: validate
+        format_sql: true
+        show_sql: true
+  flyway:
+    enabled: false
+
+# JWT 설정
+jwt:
+  secret: theneta # JWT 서명 키
+  at-expiry: 1800 # 액세스 토큰 만료 시간 (30분)
+  at-key: at-key # 액세스 토큰 키 이름
+  rt-expiry: 1209600 # 리프레시 토큰 만료 시간 (14일)
+  rt-key: rt-key # 리프레시 토큰 키 이름
+
+# 로깅 설정
+logging:
+  level:
+    org.springframework:
+      web: debug # 스프링 웹 로그 레벨
+    site.theneta.api: debug # 애플리케이션 로그 레벨
+
+# 애플리케이션 설정
+theneta:
+  base-url: http://localhost:1111 # 프론트엔드 서버 URL
