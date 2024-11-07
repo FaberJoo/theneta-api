@@ -37,6 +37,7 @@ public enum ErrorCode {
   MISSING_REQUEST_PARAMETER(HttpStatus.BAD_REQUEST, "A003", "필수 요청 매개변수가 누락되었습니다"),
   INVALID_TYPE_VALUE(HttpStatus.BAD_REQUEST, "A004", "유효하지 않은 타입 값입니다"),
   INVALID_JSON_FORMAT(HttpStatus.BAD_REQUEST, "A005", "유효하지 않은 JSON 형식입니다"),
+  INVALID_CERTIFICATION(HttpStatus.UNAUTHORIZED, "A006", "유효하지 않은 이메일 혹은 비밀번호입니다"),
   ;
 
   private final String message;
