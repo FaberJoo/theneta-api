@@ -1,4 +1,4 @@
-package site.theneta.api.apiRest.v1.auth.controller.request;
+package site.theneta.api.apiMvc.v1.auth.controller.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

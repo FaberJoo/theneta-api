@@ -1,4 +1,4 @@
-package site.theneta.api.apiRest.v1.auth.controller;
+package site.theneta.api.apiMvc.v1.auth.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import site.theneta.api.apiRest.v1.auth.controller.request.LoginRequest;
-import site.theneta.api.apiRest.v1.auth.controller.response.TokenResponse;
-import site.theneta.api.apiRest.v1.auth.service.AuthService;
-import site.theneta.api.apiRest.v1.auth.controller.request.SignupRequest;
+import site.theneta.api.apiMvc.v1.auth.controller.request.LoginRequest;
+import site.theneta.api.apiMvc.v1.auth.controller.response.TokenResponse;
+import site.theneta.api.apiMvc.v1.auth.service.AuthService;
+import site.theneta.api.apiMvc.v1.auth.controller.request.SignupRequest;
 
 @Slf4j
 @Tag(name = "Auth API", description = "인증 API")

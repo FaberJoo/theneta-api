@@ -1,4 +1,4 @@
-package site.theneta.api.apiRest.v1.auth.service;
+package site.theneta.api.apiMvc.v1.auth.service;
 
 import java.util.Map;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import site.theneta.api.apiRest.v1.auth.controller.request.LoginRequest;
-import site.theneta.api.apiRest.v1.auth.controller.response.TokenResponse;
-import site.theneta.api.apiRest.v1.auth.controller.request.SignupRequest;
+import site.theneta.api.apiMvc.v1.auth.controller.request.LoginRequest;
+import site.theneta.api.apiMvc.v1.auth.controller.request.SignupRequest;
+import site.theneta.api.apiMvc.v1.auth.controller.response.TokenResponse;
 import site.theneta.api.domain.member.entity.AuthLocal;
 import site.theneta.api.domain.member.entity.Member;
 import site.theneta.api.domain.member.entity.Profile;

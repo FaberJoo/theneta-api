@@ -1,4 +1,4 @@
-package site.theneta.api.apiRest.v1.member.controller;
+package site.theneta.api.apiMvc.v1.member.controller;
 
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
