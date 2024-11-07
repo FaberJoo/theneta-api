@@ -1,4 +1,8 @@
 spring:
+  config:
+    activate:
+      on-profile: test
+
   h2:
     console:
       enabled: true
@@ -23,16 +27,21 @@ spring:
   flyway:
     enabled: false
 
+# JWT 설정
+jwt:
+  secret: theneta # JWT 서명 키
+  at-expiry: 1800 # 액세스 토큰 만료 시간 (30분)
+  at-key: at-key # 액세스 토큰 키 이름
+  rt-expiry: 1209600 # 리프레시 토큰 만료 시간 (14일)
+  rt-key: rt-key # 리프레시 토큰 키 이름
+
+# 로깅 설정
 logging:
   level:
     org.springframework:
-      web: debug
-    site.theneta.api: debug
+      web: debug # 스프링 웹 로그 레벨
+    site.theneta.api: debug # 애플리케이션 로그 레벨
 
-jwt:
-  secret: test1234567890test1234567890
-  access-token-expiry: 1000000
-  access-token-key: at
-
+# 애플리케이션 설정
 theneta:
-  base-url: http://localhost:9999
+  base-url: http://localhost:1111 # 프론트엔드 서버 URL
